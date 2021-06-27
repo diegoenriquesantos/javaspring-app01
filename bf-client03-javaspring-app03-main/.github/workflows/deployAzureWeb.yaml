@@ -14,10 +14,11 @@ on:
 #
 # 2. Change these variables for your configuration:
 env:
-  AZURE_WEBAPP_NAME: bfdemojava02  # set this to your application's name
+  AZURE_WEBAPP_NAME: demos #bfdemojava02  # set this to your application's name
   AZURE_WEBAPP_PACKAGE_PATH: ${{ github.workspace }} # set this to the path to your web app project
   JAVA_VERSION: '11'                # set this to the java version to use
-  AZURE_WEBAPP_PUBLISH_PROFILE: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}     # set GH repo secret with the publish profile of the web app
+  AZURE_DEVOPS_TOKEN: ${{ secrets.AZURE_DEVOPS_TOKEN }}
+  #AZURE_WEBAPP_PUBLISH_PROFILE: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}     # set GH repo secret with the publish profile of the web app
 
 jobs:
   build-and-deploy:
@@ -35,7 +36,8 @@ jobs:
       uses: azure/webapps-deploy@v2
       with: 
         app-name: ${{ env.AZURE_WEBAPP_NAME }}
-        publish-profile: ${{ env.AZURE_WEBAPP_PUBLISH_PROFILE }}
+        #publish-profile: ${{ env.AZURE_WEBAPP_PUBLISH_PROFILE }}
+        publish-profile: ${{ env.AZURE_DEVOPS_TOKEN }}
         package: '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/target/*.jar'
         
   # For more information on GitHub Actions for Azure, refer to https://github.com/Azure/Actions
