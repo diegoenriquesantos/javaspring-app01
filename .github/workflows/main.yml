@@ -31,7 +31,7 @@ jobs:
       with:
         java-version: ${{ env.JAVA_VERSION }}
     - name: Build with Maven
-      run: mvn package --file /bf-client03-javaspring-app03-main/pom.xml
+      run: mvn package --file /javaspring-app01/bf-client03-javaspring-app03-main/pom.xml
     - name: 'Deploy to Azure WebApp'
       uses: azure/webapps-deploy@v2
       with: 
